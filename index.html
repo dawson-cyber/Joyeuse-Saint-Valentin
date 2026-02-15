@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanessa ❤️ 2 mois</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fce8ec;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 35px 30px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(190, 70, 90, 0.2);
+            position: relative;
+            border: 2px solid #ffe2e6;
+        }
+
+        /* Petite décoration */
+        .card::before {
+            content: '❤️';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 30px;
+            background: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px #ffb6c1;
+            border: 2px solid #ffb6c1;
+        }
+
+        h1 {
+            font-size: 38px;
+            color: #b33b4f;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .sous-titre {
+            color: #a14e5a;
+            font-size: 20px;
+            margin-bottom: 30px;
+            border-left: 5px solid #ffb6c1;
+            padding-left: 20px;
+            font-style: italic;
+        }
+
+        .compteur {
+            background: #fff2f5;
+            border-radius: 80px;
+            padding: 25px;
+            margin: 30px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px dashed #ffb6c1;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .chiffre {
+            font-size: 48px;
+            font-weight: 700;
+            color: #c1354d;
+            line-height: 1;
+        }
+
+        .chiffre small {
+            font-size: 18px;
+            font-weight: normal;
+            color: #a14e5a;
+            display: block;
+        }
+
+        .badge-2mois {
+            background: #ffd700;
+            color: #b33b4f;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 22px;
+            border: 3px solid white;
+            box-shadow: 0 5px 0 #c99b00;
+        }
+
+        .message-principal {
+            background: #fff0f3;
+            padding: 30px;
+            border-radius: 40px 10px 40px 10px;
+            margin: 30px 0;
+            border: 2px solid white;
+            box-shadow: inset 0 0 20px #ffe2ec;
+        }
+
+        .message-principal p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #41292e;
+        }
+
+        .message-principal .vanessa {
+            font-size: 28px;
+            color: #c1354d;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .lettre {
+            background: #fff9fa;
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 8px solid #ff95a8;
+            margin: 30px 0;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #3b2a2e;
+            box-shadow: 0 8px 0 #ffe2e6;
+        }
+
+        .lettre strong {
+            color: #b33b4f;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 26px;
+            color: #b33b4f;
+            font-style: italic;
+            margin-top: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Bouton */
+        .bouton-wrapper {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+
+        .bouton {
+            background: #ff4d6d;
+            border: none;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 15px 0 #b32d4a, 0 20px 30px #ff99aa;
+            border: 5px solid white;
+            transition: 0.1s linear;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.3;
+        }
+
+        .bouton:active {
+            transform: translateY(10px);
+            box-shadow: 0 5px 0 #b32d4a, 0 15px 25px #ff99aa;
+        }
+
+        .bouton span:first-child {
+            font-size: 35px;
+            margin-bottom: 5px;
+        }
+
+        /* Date */
+        .date {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #b33b4f;
+            background: #fff2f5;
+            padding: 15px;
+            border-radius: 60px;
+            border: 2px solid #ffb6c1;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            z-index: 1000;
+        }
+
+        .popup-overlay.show {
+            display: flex;
+        }
+
+        .popup-carte {
+            background: white;
+            border-radius: 40px;
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            border: 5px solid #ffb6c1;
+            box-shadow: 0 25px 40px #ff1a4f;
+            position: relative;
+        }
+
+        .popup-carte h2 {
+            font-size: 36px;
+            color: #c1354d;
+            margin-bottom: 20px;
+        }
+
+        .popup-carte p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #3b2a2e;
+            margin: 25px 0;
+        }
+
+        .popup-coeur {
+            font-size: 50px;
+            animation: battement 0.8s infinite;
+            margin: 15px 0;
+        }
+
+        @keyframes battement {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .popup-fermer {
+            background: #ff4d6d;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 60px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #b32d4a;
+            margin-top: 20px;
+        }
+
+        .popup-fermer:active {
+            transform: translateY(5px);
+            box-shadow: 0 3px 0 #b32d4a;
+        }
+
+        /* Responsive */
+        @media (max-width: 450px) {
+            .card {
+                padding: 25px 20px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .bouton {
+                width: 140px;
+                height: 140px;
+                font-size: 20px;
+            }
+            
+            .compteur {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .date {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Joyeuse Saint-Valentin</h1>
+        <div class="sous-titre">Pour ma Vanessa chérie</div>
+
+        <!-- Compteur 2 mois -->
+        <div class="compteur">
+            <div>
+                <span class="chiffre">60 <small>jours</small></span>
+            </div>
+            <div class="badge-2mois">✨ 2 MOIS ✨</div>
+        </div>
+
+        <!-- Message principal -->
+        <div class="message-principal">
+            <span class="vanessa">Vanessa,</span>
+            <p>Depuis 60 jours, tu illumines ma vie. Chaque jour avec toi est un cadeau.</p>
+        </div>
+
+        <!-- Lettre -->
+        <div class="lettre">
+            <strong>💌 Pour nos 2 mois</strong>
+            <p>Ma Vanessa,</p>
+            <p>Il y a deux mois, nos chemins se sont croisés et tout a changé. Ton sourire, ta douceur, ta façon d'être toi... tout me rend heureux.</p>
+            <p>Ces 70 jours passés à tes côtés sont les plus beaux. Je veux en vivre des centaines d'autres avec toi.</p>
+            <div class="signature">Je t'aime ❤️</div>
+        </div>
+
+        <!-- Bouton rond -->
+        <div class="bouton-wrapper">
+            <button class="bouton" id="btnSurprise">
+                <span>✨</span>
+                CLIC<br>ICI
+                <span style="font-size: 20px;">❤️</span>
+            </button>
+        </div>
+
+        <!-- Date -->
+        <div class="date">
+            <span>14 Février 2025</span>
+            <span>•</span>
+            <span>2 mois d'amour</span>
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-carte">
+            <h2>💕 Vanessa 💕</h2>
+            <div class="popup-coeur">❤️</div>
+            <p>
+                Merci pour ces 2 mois merveilleux.<br>
+                Tu es la plus belle chose qui me soit arrivée.<br>
+                <span style="font-size: 28px; display: block; margin-top: 15px;">Je t'aime</span>
+            </p>
+            <button class="popup-fermer" id="btnFermer">Fermer</button>
+        </div>
+    </div>
+
+    <script>
+        const btn = document.getElementById('btnSurprise');
+        const popup = document.getElementById('popup');
+        const fermer = document.getElementById('btnFermer');
+
+        btn.addEventListener('click', function() {
+            popup.classList.add('show');
+            
+            // Petits cœurs qui pop
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const coeur = document.createElement('div');
+                    coeur.innerHTML = '❤️';
+                    coeur.style.position = 'fixed';
+                    coeur.style.left = Math.random() * 100 + '%';
+                    coeur.style.top = Math.random() * 100 + '%';
+                    coeur.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    coeur.style.pointerEvents = 'none';
+                    coeur.style.zIndex = '1001';
+                    coeur.style.animation = 'vole 1s forwards';
+                    document.body.appendChild(coeur);
+                    setTimeout(() => coeur.remove(), 1000);
+                }, i * 100);
+            }
+        });
+
+        fermer.addEventListener('click', function() {
+            popup.classList.remove('show');
+        });
+
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                popup.classList.remove('show');
+            }
+        });
+
+        // Style pour l'animation des coeurs
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes vole {
+                0% { transform: translateY(0) scale(0); opacity: 0; }
+                20% { transform: translateY(-30px) scale(1); opacity: 1; }
+                100% { transform: translateY(-150px) scale(0.5); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
