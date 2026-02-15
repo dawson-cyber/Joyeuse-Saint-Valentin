@@ -189,6 +189,38 @@
             margin-bottom: 5px;
         }
 
+        /* Bouton Bouquet */
+        .bouton-bouquet {
+            background: #ff69b4;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 0 #d94e95, 0 15px 25px rgba(255, 105, 180, 0.4);
+            border: 4px solid white;
+            transition: 0.1s linear;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bouton-bouquet:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 0 #d94e95, 0 17px 30px rgba(255, 105, 180, 0.5);
+        }
+
+        .bouton-bouquet:active {
+            transform: translateY(8px);
+            box-shadow: 0 2px 0 #d94e95, 0 10px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .bouton-bouquet span {
+            font-size: 28px;
+        }
+
         /* Date */
         .date {
             display: flex;
@@ -294,6 +326,11 @@
                 height: 140px;
                 font-size: 20px;
             }
+
+            .bouton-bouquet {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
             
             .compteur {
                 flex-direction: column;
@@ -343,6 +380,16 @@
                 CLIC<br>
                 <span style="font-size: 20px;">❤️</span>
             </button>
+        </div>
+
+        <!-- Bouton Bouquet -->
+        <div class="bouton-wrapper">
+            <a href="bouquet.html" style="text-decoration: none;">
+                <button class="bouton-bouquet">
+                    <span>🌹</span>
+                    Ton Bouquet
+                </button>
+            </a>
         </div>
 
         <!-- Date -->
